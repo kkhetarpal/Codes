@@ -108,6 +108,39 @@ void deleteNode(struct node** head_ref, int key){
 	free(temp);
 }
 
+
+/* Given a reference (pointer to pointer) to the head of a list
+   and a key, deletes the first occurrence of key in linked list */
+void deleteNodebyPosition(struct node** head_ref, int position){
+
+	if (*head_ref == NULL)          //if the ll is empty
+		return;
+
+	struct node* temp = *head_ref;  //Store the head node
+
+	if (position == 0)             //If head is to be deleted
+	{
+		*head_ref = temp->next;    //Change head to next of head
+		free(temp);                //Free the old head
+		return;
+	}
+
+	for (int i=0; temp != NULL && i<position-1; i++)  //previous of the node to be deleted
+		temp =  temp->next;
+
+	if (temp == NULL || temp->next == NULL)
+		return;
+
+	struct node *next = temp->next->next;
+
+	free(temp->next);  //Free the node where position is
+
+	temp->next = next; //previous to the node to be deleted should now point to the next of temp
+
+}
+
+
+
 int main() {
 
 	struct node* head = NULL;
@@ -127,6 +160,10 @@ int main() {
     deleteNode(&head, 1);
     printlinklist(head);
 
+
+    cout << endl;
+    deleteNodebyPosition(&head, 1);
+    printlinklist(head);
 	return 0;
 }
 
