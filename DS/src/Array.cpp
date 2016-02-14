@@ -1,14 +1,17 @@
 //============================================================================
 // Name        : Array.cpp
-// Author      : Khimya
+// Author      : Khimya Khetarpal
 // Version     :
 // Copyright   : Your copyright notice
-// Description :Write code to reverse a C-Style String. (C-String means that “abcd” is represented as five characters, including the null character.)
+// Description : Reverse a string
 //============================================================================
 
 #include <iostream>
 #include <string>
 using namespace std;
+
+void reverseastring(char *str);
+bool isuniquechar(string str);
 
 bool isuniquechar(string str){
 
@@ -25,36 +28,30 @@ bool isuniquechar(string str){
 	return true;
 }
 
-void reverseastring(string str){
 
-	int n = str.length();
-	string newstring;
-	if(n == 0)
-		cout << "Empty String" << endl;
-	if(n==1 || n==2)
-		cout << "The reverse string is " << str << endl;
-
-	for(int i = 0; i <= n-1; i++){
-		newstring[i] = str[n-i-1];
-		cout << newstring[i];
+void reverseastring(char *str){
+	char *end = str;
+	char temp;
+	if (str) {
+		while(*end){
+			++end;
+		}
+		--end;
+	while(str < end){
+		temp = *str;
+		*str = *end;
+		*end = temp;
+		*str++;
+		*end--;
+		}
 	}
 }
 
-
 int main() {
 
-	string s1 =  "Khimya";
-	string s2 = "Priti";
-
-//	bool s11 = isuniquechar(s1);
-//	bool s22 = isuniquechar(s2);
-//	cout << "Unique Characters in %s" << s1 << " ? " << s11  << endl;
-//	cout << "Unique Characters in %s" << s2 << " ? " << s22  << endl;
+	char s1[] =  "Khimya";
 
 	reverseastring(s1);
-	cout << endl;
-	reverseastring(s2);
-	cout << endl;
-
+	cout << " Reverse of string Khimya is " << s1;
 	return 0;
 }
