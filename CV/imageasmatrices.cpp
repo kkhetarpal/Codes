@@ -18,8 +18,10 @@ int main()
   imshow( "Display Image", image );*/
 
 
-  Mat B(image);             //copy constructor
-  Mat C = B.clone();		//copy using clone
+  Mat B(image), C;             //copy constructor
+  B.copyTo(C);		//copy using copyTo
+
+
   namedWindow( "Display Image", 0);
   imshow( "Display Image", C );
 
