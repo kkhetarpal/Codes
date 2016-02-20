@@ -13,11 +13,17 @@ int main()
       printf( "No image data \n" );
       return -1;
     }
-
+/*
   namedWindow( "Display Image", 0);
-  imshow( "Display Image", image );
+  imshow( "Display Image", image );*/
 
-  waitKey(15);
+
+  Mat B(image);             //copy constructor
+  Mat C = B.clone();		//copy using clone
+  namedWindow( "Display Image", 0);
+  imshow( "Display Image", C );
+
+  waitKey(0);
 
   return 0;
 }
