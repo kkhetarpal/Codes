@@ -65,11 +65,16 @@ int main()
   imshow("Original Image", src);
 
 
-  Sharpen(src, dst);
+  //Sharpen(src, dst);
 
+  Mat kern = (Mat_<char>(3,3) <<  0, -1,  0,
+                                 -1,  5, -1,
+                                  0, -1,  0);
 
+  filter2D(src, dst, src.depth(), kern);
   namedWindow("Sharpen Image",0);
   imshow("Sharpen Image", dst);
+
 
   waitKey(0);
   return 0;
